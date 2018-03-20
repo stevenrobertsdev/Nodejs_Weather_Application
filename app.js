@@ -3,6 +3,19 @@ const   request = require('request'),
 
 const   keys = require("./API-KEYS");
 
+const argv = yargs
+    .options({
+        a: {
+            alias: "Address",
+            demand: true,
+            describe: "Address to fetch weather for",
+            string: true
+        }
+    })
+    .help()
+    .alias("help","h")
+    .argv;
+
 request({
     url: `https://maps.googleapis.com/maps/api/geocode/json?address=B901HD&key=${keys.google}`,
     json: true
