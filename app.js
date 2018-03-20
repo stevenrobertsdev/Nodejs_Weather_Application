@@ -23,14 +23,21 @@ request({
     json: true
 
 },(error, response, body) => {
-    if(response.statusCode !== 200) {
-        console.log("Could not connect to the Google servers");
-    } else if(body.status !== "OK") {
+    if(error) {
+        console.log("Unable to connect to Google servers")
+    } else if(body.status === "ZERO_RESULTS") {
         console.log("Address not found");
-    } else {
+    } else if(body.status === "OK") {
         console.log(body.results[0].formatted_address);
         console.log('Latitude: ' + body.results[0].geometry.location.lat);
         console.log('Longitude: ' + body.results[0].geometry.location.lng);
-    }
-    
+    }  
+})
+
+
+request({
+    url: `https://api.darksky.net/forecast/${keys.darkSky}/37.8267,-122.4233`,
+    json: true
+},(error, response, body) => {
+    console.log(`Temperature is ${body.currently.temperature} with ${body.currently.summary}`);
 })
