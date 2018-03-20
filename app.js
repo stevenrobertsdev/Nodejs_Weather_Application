@@ -17,13 +17,21 @@ const argv = yargs
     .alias("help","h")
     .argv;
 
-var encodedAddress = encodeURIComponent(argv.a);
-
-geoCode.geoCode(encodedAddress);
+geoCode.geoCode(argv.a,(errorMessage, results) => {
+    if(errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(JSON.stringify(results,undefined,2));
+    }
+});
 
 request({
     url: `https://api.darksky.net/forecast/${keys.darkSky}/37.8267,-122.4233`,
     json: true
 },(error, response, body) => {
-    console.log(`Temperature is ${body.currently.temperature} with ${body.currently.summary}`);
+    if(!error && response.statusCode === 200) {
+        console.log(`Temperature is ${body.currently.temperature} with ${body.currently.summary}`);
+    } else {
+        console.log("Unable to fetch weather")
+    }
 })
