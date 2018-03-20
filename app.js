@@ -7,7 +7,14 @@ request({
     json: true
 
 },(error, response, body) => {
-    console.log(body.results[0].formatted_address);
-    console.log('Latitude: ' + body.results[0].geometry.location.lat);
-    console.log('Longitude: ' + body.results[0].geometry.location.lng);
+    if(response.statusCode !== 200) {
+        console.log("Could not connect to the Google servers");
+    } else if(body.status !== "OK") {
+        console.log("Address not found");
+    } else {
+        console.log(body.results[0].formatted_address);
+        console.log('Latitude: ' + body.results[0].geometry.location.lat);
+        console.log('Longitude: ' + body.results[0].geometry.location.lng);
+    }
+    
 })
