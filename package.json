@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/stevenrobertsdev/Nodejs_Weather_Application/issues"
   },
-  "homepage": "https://github.com/stevenrobertsdev/Nodejs_Weather_Application#readme"
+  "homepage": "https://github.com/stevenrobertsdev/Nodejs_Weather_Application#readme",
+  "dependencies": {
+    "request": "^2.73.0"
+  }
 }
