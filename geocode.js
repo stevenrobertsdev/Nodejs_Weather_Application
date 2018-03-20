@@ -1,7 +1,5 @@
-
-const   request = require('request');
-
-const   keys = require("./API-KEYS");
+const   request = require('request'),
+        keys = require("./API-KEYS");
 
 var geoCode = (address) => {
     request({
