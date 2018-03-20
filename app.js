@@ -1,4 +1,8 @@
-var keys = require("./API-KEYS.js");
+const request = require('request');
 
-console.log(`Google API: ${keys.google}`);
-console.log(`Dark Sky API: ${keys.darkSky}`);
+request({
+    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=B901HD'
+
+},(error, response, body) => {
+    console.log(body);
+})
