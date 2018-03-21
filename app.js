@@ -1,8 +1,7 @@
 const   request = require('request'),
         yargs = require('yargs');
 
-const   keys = require("./API-KEYS"),
-        geoCode = require("./geocode"),
+const   geoCode = require("./geocode"),
         weatherCode = require("./weathercode");
 
 const argv = yargs
