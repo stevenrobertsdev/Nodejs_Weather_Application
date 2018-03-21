@@ -25,4 +25,10 @@ geoCode.geoCode(argv.a,(errorMessage, results) => {
     }
 });
 
-weatherCode.weatherCode();
+weatherCode.weatherCode('37.8267','-122.4233',(errorMessage, results) => {
+    if(errorMessage) {
+        console.log(errorMessage);
+    } else {
+        console.log(JSON.stringify(results,undefined,2));
+    }
+});
