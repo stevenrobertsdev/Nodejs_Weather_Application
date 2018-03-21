@@ -2,7 +2,8 @@ const   request = require('request'),
         yargs = require('yargs');
 
 const   keys = require("./API-KEYS"),
-        geoCode = require("./geocode");
+        geoCode = require("./geocode"),
+        weatherCode = require("./weathercode");
 
 const argv = yargs
     .options({
@@ -25,13 +26,4 @@ geoCode.geoCode(argv.a,(errorMessage, results) => {
     }
 });
 
-request({
-    url: `https://api.darksky.net/forecast/${keys.darkSky}/37.8267,-122.4233`,
-    json: true
-},(error, response, body) => {
-    if(!error && response.statusCode === 200) {
-        console.log(`Temperature is ${body.currently.temperature} with ${body.currently.summary}`);
-    } else {
-        console.log("Unable to fetch weather")
-    }
-})
+weatherCode.weatherCode();
