@@ -7,7 +7,7 @@ var weatherCode = () => {
         json: true
     },(error, response, body) => {
         if(!error && response.statusCode === 200) {
-            console.log(`Temperature is ${body.currently.temperature} with ${body.currently.summary}`);
+            console.log(`Temperature is ${body.currently.temperature} and weather is ${body.currently.summary}`);
         } else {
             console.log("Unable to fetch weather")
         }
