@@ -21,14 +21,15 @@ geoCode.geoCode(argv.a,(errorMessage, results) => {
     if(errorMessage) {
         console.log(errorMessage);
     } else {
-        console.log(JSON.stringify(results,undefined,2));
+        console.log(results.address);
+        weatherCode.weatherCode(results.latitude,results.longitude,(errorMessage, weatherResults) => {
+            if(errorMessage) {
+                console.log(errorMessage);
+            } else {
+                console.log(`Temperature is: ${weatherResults.Temperature}`);
+                console.log(`Weather summary is: ${weatherResults.Summary}`);
+            }
+        });
     }
 });
 
-weatherCode.weatherCode('37.8267','-122.4233',(errorMessage, results) => {
-    if(errorMessage) {
-        console.log(errorMessage);
-    } else {
-        console.log(JSON.stringify(results,undefined,2));
-    }
-});

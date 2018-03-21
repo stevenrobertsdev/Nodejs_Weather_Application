@@ -20,3 +20,4 @@ var weatherCode = (lat,lng,callback) => {
 module.exports = {
     weatherCode
 }
+
